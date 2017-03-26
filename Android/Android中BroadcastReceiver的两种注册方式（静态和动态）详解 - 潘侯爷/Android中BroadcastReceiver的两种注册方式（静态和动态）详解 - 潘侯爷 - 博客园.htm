@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.cnblogs.com/panhouye/p/6168156.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/bundle-Autumn.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/bundle-Autumn-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/panhouye/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/panhouye/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/panhouye/wlwmanifest.xml">
+<script type="text/javascript" src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/encoder.js"></script><script src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'panhouye', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<table id="blog_header" cellspacing="0" cellpadding="0" width="100%" border="0" class="banner" height="250" background="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/bg_banner.jpg">
+        <tbody><tr>
+            <td width="61">
+                &nbsp;
+            </td>
+            <td width="236" align="center">
+                
+<br><br><br><br><br><br><br>
+<div id="header">
+	<span>
+		<a id="Header1_HeaderTitle" href="http://www.cnblogs.com/panhouye/">潘侯爷</a><br><br>
+		学会归零，重新开始
+	</span>
+</div>
+            </td>
+            <td style="padding-bottom: 30px" align="center" valign="bottom">
+                &nbsp;
+            </td>
+        </tr>
+</tbody></table>
+<table align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr>
+        <td width="60">
+            &nbsp;
+        </td>
+        <td id="sidebar" valign="top" s="">
+            <table align="center" width="100%" height="1400" cellspacing="0" cellpadding="5" border="0" bgcolor="white">
+                <tbody><tr>
+                    <td class="banner" valign="top" style="padding-top: 0px">
+                        
+                            
+<div class="news"><div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/panhouye/">潘侯爷</a><br>园龄：<a href="http://home.cnblogs.com/u/panhouye/" title="入园时间：2016-11-22">2个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/panhouye/followers/">16</a><br>关注：<a href="http://home.cnblogs.com/u/panhouye/followees/">4</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;432cd643-9fb0-e611-845c-ac853d9f53ac&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script></div>
+
+                            <div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/panhouye/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/panhouye/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/panhouye/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/panhouye/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/panhouye/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<h3 class="catListTitle">我的标签</h3>
+<div id="MyTag">
+<ul>
+<li><a href="http://www.cnblogs.com/panhouye/tag/Android/">Android</a>(40)</li><li><a href="http://www.cnblogs.com/panhouye/tag/Activity/">Activity</a>(9)</li><li><a href="http://www.cnblogs.com/panhouye/tag/JAVA/">JAVA</a>(9)</li><li><a href="http://www.cnblogs.com/panhouye/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>(6)</li><li><a href="http://www.cnblogs.com/panhouye/tag/AlterDialog/">AlterDialog</a>(5)</li><li><a href="http://www.cnblogs.com/panhouye/tag/Notification/">Notification</a>(4)</li><li><a href="http://www.cnblogs.com/panhouye/tag/ListView/">ListView</a>(3)</li><li><a href="http://www.cnblogs.com/panhouye/tag/ViewPager/">ViewPager</a>(3)</li><li><a href="http://www.cnblogs.com/panhouye/tag/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/">开源框架</a>(3)</li><li><a href="http://www.cnblogs.com/panhouye/tag/fragment/">fragment</a>(3)</li><li><a href="http://www.cnblogs.com/panhouye/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+		<h1 class="listtitle">随笔分类<span style="font-size:11px;font-weight:normal">(100)</span></h1>
+		
+				<ul class="list">
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_0" class="listitem" href="http://www.cnblogs.com/panhouye/category/914455.html">Android(40)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_1" class="listitem" href="http://www.cnblogs.com/panhouye/category/935802.html">Android开源框架(3)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_2" class="listitem" href="http://www.cnblogs.com/panhouye/category/914456.html">JAVASE(8)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_3" class="listitem" href="http://www.cnblogs.com/panhouye/category/912902.html">技术分享(48)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_4" class="listitem" href="http://www.cnblogs.com/panhouye/category/921720.html">生活放松(1)</a> </li>
+			
+				</ul>
+			
+	
+		<h1 class="listtitle">随笔档案<span style="font-size:11px;font-weight:normal">(50)</span></h1>
+		
+				<ul class="list">
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_0" class="listitem" href="http://www.cnblogs.com/panhouye/archive/2017/02.html">2017年2月 (2)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_1" class="listitem" href="http://www.cnblogs.com/panhouye/archive/2017/01.html">2017年1月 (6)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_2" class="listitem" href="http://www.cnblogs.com/panhouye/archive/2016/12.html">2016年12月 (28)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_3" class="listitem" href="http://www.cnblogs.com/panhouye/archive/2016/11.html">2016年11月 (14)</a> </li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		9241
+	</li><li>
+		排名 -
+		22828
+	</li>
+</ul>
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/panhouye/p/6288175.html#3604809">1. Re:Android中使用开源框架PagerSlidingTabStrip实现导航标题</a></li>
+        <li class="recent_comment_body">@SOSOS's BLog弄好之后还是很有成就感吧...</li>
+        <li class="recent_comment_author">--潘侯爷</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/panhouye/p/6288175.html#3604381">2. Re:Android中使用开源框架PagerSlidingTabStrip实现导航标题</a></li>
+        <li class="recent_comment_body">我也有一个类似的.是在搜索框的tab.切换之间需要把值也带到相应的tab里面.当时也弄好好长时间...</li>
+        <li class="recent_comment_author">--SOSOS's BLog</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/panhouye/p/6262511.html#3599275">3. Re:Android中通过访问本地相册或者相机设置用户头像</a></li>
+        <li class="recent_comment_body">+1</li>
+        <li class="recent_comment_author">--ListArr</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/panhouye/p/6227692.html#3591896">4. Re:JAVA环境变量和TomCat服务器配置</a></li>
+        <li class="recent_comment_body">@码魂用9演示配置，还没真正用过，有什么问题吗...</li>
+        <li class="recent_comment_author">--潘侯爷</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/panhouye/p/6227692.html#3591228">5. Re:JAVA环境变量和TomCat服务器配置</a></li>
+        <li class="recent_comment_body">卧槽,服务器?你服务器的tomcat居然敢选9????</li>
+        <li class="recent_comment_author">--码魂</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园.htm">1. Android中BroadcastReceiver的两种注册方式（静态和动态）详解(725)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6209635.html">2. Java实现多线程断点下载（下载过程中可以暂停）(639)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6220955.html">3. Android中ListView实现图文并列并且自定义分割线（完善仿微信APP）(386)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6120232.html">4. JAVA装饰者模式（从现实生活角度理解代码原理）(372)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6111767.html">5. Android中使用ViewFlipper实现屏幕页面切换（关于坐标轴的问题已补充更改）(337)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/panhouye/p/6181720.html">1. Android中Activity的四大启动模式实验简述(4)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6204505.html">2. Java中使用IO流实现大文件的分裂与合并(3)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6135949.html">3. Android中使用GridView和ImageViewSwitcher实现电子相册简单功能(2)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6227692.html">4. JAVA环境变量和TomCat服务器配置(2)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6220955.html">5. Android中ListView实现图文并列并且自定义分割线（完善仿微信APP）(2)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/panhouye/p/6209635.html">1. Java实现多线程断点下载（下载过程中可以暂停）(3)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6185093.html">2. Android中Fragment的两种创建方式(3)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6123950.html">3. Android中使用ViewPager实现屏幕页面切换和页面切换效果(2)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6278116.html">4. Android中使用开源框架Fresco处理图片(2)</a></li><li><a href="http://www.cnblogs.com/panhouye/p/6246395.html">5. Android中访问sdcard路径的几种方式(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+                        
+                        <br>
+                        <center>
+                            Powered by <a href="http://www.cnblogs.com/">博客园</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td valign="top" style="padding: 0">
+            <table align="center" width="100%" height="1400" cellspacing="0" cellpadding="5" border="0" bgcolor="white" class="index">
+                <tbody><tr>
+                    <td class="banner" valign="top">
+                        <center>
+                            <a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a> <span id="sitehome_link_split">|</span> 
+<a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/panhouye/">首页</a> <span id="bloghome_link_split">|</span> 
+<a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a> <span id="newpost_link_split">|</span> 
+<!--<a id="MyLinks1_NewArticleLink" class="menu" href="/EnterMyBlog.aspx?NewArticle=1">发新文章</a> | -->
+<a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E6%BD%98%E4%BE%AF%E7%88%B7">联系</a> <span id="contact_link_split">|</span>  
+<a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/panhouye/rss">订阅</a><a id="blog_nav_rss_image" href="http://www.cnblogs.com/panhouye/rss"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/xml.gif" alt="订阅"></a> <span id="rss_link_split">|</span> 
+<a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+                        </center>
+                        
+<div id="post_detail">
+<div class="block">
+	<h1 class="block_title"><a id="cb_post_title_url" href="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园.htm">Android中BroadcastReceiver的两种注册方式（静态和动态）详解</a></h1>
+	<div class="post">
+		<div class="postcontent">
+			<div id="cnblogs_post_body"><p>今天我们一起来探讨下安卓中BroadcastReceiver组件以及详细分析下它的两种注册方式。</p>
+<p>BroadcastReceiver也就是“广播接收者”的意思，顾名思义，它就是用来接收来自系统和应用中的广播。在Android系统中，广播体现在方方面面，例如当开机完成后系统会产生一条广播，接收到这条广播就能实现开机启动服务的功能；当网络状态改变时系统会产生一条广播，接收到这条广播就能及时地做出提示和保存数据等操作；当电池电量改变时，系统会产生一条广播，接收到这条广播就能在电量低时告知用户及时保存进度等等。Android中的广播机制设计的非常出色，很多事情原本需要开发者亲自操作的，现在只需等待广播告知自己就可以了，大大减少了开发的工作量和开发周期。而作为应用开发者，就需要数练掌握Android系统提供的一个开发利器，那就是BroadcastReceiver。</p>
+<h3>在我们详细分析创建BroadcastReceiver的两种注册方式前，我们先罗列本次分析的大纲：</h3>
+<p>（1）对静态和动态两种注册方式进行概念阐述以及演示实现步骤</p>
+<p>（2）简述两种BroadcastReceiver的类型（为后续注册方式的对比做准备）</p>
+<p>（3）在默认广播类型下设置优先级和无优先级情况下两种注册方式的比较</p>
+<p>（4）在有序广播类型下两种注册方式的比较</p>
+<p>（5）通过接受打电话的广播，在程序（Activity）运行时和终止运行时，对两种注册方式的比较</p>
+<p>（6）总结两种方式的特点</p>
+<h2>第一步：静态和动态注册方式基本概念以及实现步骤</h2>
+<p><span style="font-size: medium">构建<span style="font-family: Calibri">Intent</span>，使用<span style="font-family: Calibri">sendBroadcast</span>方法发出广播定义一个广播接收器，该广播接收器继承<span style="font-family: Calibri">BroadcastReceiver</span>，并且覆盖<span style="font-family: Calibri">onReceive()</span>方法来响应事件注册该广播接收器，我们可以在代码中注册（<strong><span style="color: red">动态注册</span></strong>），也可以<span style="font-family: Calibri">AndroidManifest.xml</span>配置文件中注册（<strong><span style="color: red">静态注册</span></strong>）。</span></p>
+<h3>动态注册：</h3>
+<p>效果如下图：</p>
+<p><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213000656464-428483378.gif" alt=""></p>
+<p>这里就不演示点击按钮布局的实现了，MainActivity.java中实现代码如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.BroadcastReceiver;
+</span><span style="color: #008080"> 2</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Context;
+</span><span style="color: #008080"> 3</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Intent;
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.IntentFilter;
+</span><span style="color: #008080"> 5</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.support.v7.app.AppCompatActivity;
+</span><span style="color: #008080"> 6</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.os.Bundle;
+</span><span style="color: #008080"> 7</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.Gravity;
+</span><span style="color: #008080"> 8</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.View;
+</span><span style="color: #008080"> 9</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.widget.Toast;
+</span><span style="color: #008080">10</span> 
+<span style="color: #008080">11</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> MainActivity <span style="color: #0000ff">extends</span><span style="color: #000000"> AppCompatActivity {
+</span><span style="color: #008080">12</span> <span style="color: #000000">    DynamicReceiver dynamicReceiver;
+</span><span style="color: #008080">13</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">14</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onCreate(Bundle savedInstanceState) {
+</span><span style="color: #008080">15</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onCreate(savedInstanceState);
+</span><span style="color: #008080">16</span> <span style="color: #000000">        setContentView(R.layout.activity_main);
+</span><span style="color: #008080">17</span>         <span style="color: #008000">//</span><span style="color: #008000">实例化IntentFilter对象</span>
+<span style="color: #008080">18</span>         IntentFilter filter = <span style="color: #0000ff">new</span><span style="color: #000000"> IntentFilter();
+</span><span style="color: #008080">19</span>         filter.addAction("panhouye"<span style="color: #000000">);
+</span><span style="color: #008080">20</span>         dynamicReceiver = <span style="color: #0000ff">new</span><span style="color: #000000"> DynamicReceiver();
+</span><span style="color: #008080">21</span>         <span style="color: #008000">//</span><span style="color: #008000">注册广播接收</span>
+<span style="color: #008080">22</span> <span style="color: #000000">        registerReceiver(dynamicReceiver,filter);
+</span><span style="color: #008080">23</span> <span style="color: #000000">    }
+</span><span style="color: #008080">24</span>     <span style="color: #008000">//</span><span style="color: #008000">按钮点击事件</span>
+<span style="color: #008080">25</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> send2(View v){
+</span><span style="color: #008080">26</span>         Intent intent = <span style="color: #0000ff">new</span><span style="color: #000000"> Intent();
+</span><span style="color: #008080">27</span>         intent.setAction("panhouye"<span style="color: #000000">);
+</span><span style="color: #008080">28</span>         intent.putExtra("sele","潘侯爷"<span style="color: #000000">);
+</span><span style="color: #008080">29</span> <span style="color: #000000">        sendBroadcast(intent);
+</span><span style="color: #008080">30</span> <span style="color: #000000">    }
+</span><span style="color: #008080">31</span>     <span style="color: #008000">/*</span><span style="color: #008000">动态注册需在Acticity生命周期onPause通过
+</span><span style="color: #008080">32</span> <span style="color: #008000">     *unregisterReceiver()方法移除广播接收器，
+</span><span style="color: #008080">33</span> <span style="color: #008000">     * 优化内存空间，避免内存溢出
+</span><span style="color: #008080">34</span>      <span style="color: #008000">*/</span>
+<span style="color: #008080">35</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">36</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onPause() {
+</span><span style="color: #008080">37</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onPause();
+</span><span style="color: #008080">38</span>         unregisterReceiver(<span style="color: #0000ff">new</span><span style="color: #000000"> MyReceiver());
+</span><span style="color: #008080">39</span> <span style="color: #000000">    }
+</span><span style="color: #008080">40</span>     <span style="color: #008000">//</span><span style="color: #008000">通过继承 BroadcastReceiver建立动态广播接收器</span>
+<span style="color: #008080">41</span>     <span style="color: #0000ff">class</span> DynamicReceiver <span style="color: #0000ff">extends</span><span style="color: #000000"> BroadcastReceiver{
+</span><span style="color: #008080">42</span> <span style="color: #000000">        @Override
+</span><span style="color: #008080">43</span>         <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onReceive(Context context, Intent intent) {
+</span><span style="color: #008080">44</span>             <span style="color: #008000">//</span><span style="color: #008000">通过土司验证接收到广播</span>
+<span style="color: #008080">45</span>             Toast t = Toast.makeText(context,"动态广播："+ intent.getStringExtra("sele"<span style="color: #000000">), Toast.LENGTH_SHORT);
+</span><span style="color: #008080">46</span>             t.setGravity(Gravity.TOP,0,0);<span style="color: #008000">//</span><span style="color: #008000">方便录屏，将土司设置在屏幕顶端</span>
+<span style="color: #008080">47</span> <span style="color: #000000">            t.show();
+</span><span style="color: #008080">48</span> <span style="color: #000000">        }
+</span><span style="color: #008080">49</span> <span style="color: #000000">    }
+</span><span style="color: #008080">50</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>建立方法代码中做了详细注释，有不明白的地方请留言讨论。</p>
+<h3>静态注册：</h3>
+<p>效果如下：</p>
+<p><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213000856370-1321664164.gif" alt=""></p>
+<p><strong>静态注册建立第一步，新建BroadcastReceiver，见下图：</strong></p>
+<p><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213001019979-1319403221.png" alt=""></p>
+<p><strong>通过以上步骤，生成MyReceiver.java文件：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.BroadcastReceiver;
+</span><span style="color: #008080"> 2</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Context;
+</span><span style="color: #008080"> 3</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Intent;
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.Gravity;
+</span><span style="color: #008080"> 5</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.widget.Toast;
+</span><span style="color: #008080"> 6</span> 
+<span style="color: #008080"> 7</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> MyReceiver <span style="color: #0000ff">extends</span><span style="color: #000000"> BroadcastReceiver {
+</span><span style="color: #008080"> 8</span>     <span style="color: #0000ff">public</span><span style="color: #000000"> MyReceiver() {
+</span><span style="color: #008080"> 9</span> <span style="color: #000000">    }
+</span><span style="color: #008080">10</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">11</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onReceive(Context context, Intent intent) {
+</span><span style="color: #008080">12</span>         Toast t = Toast.makeText(context,"静态广播："+intent.getStringExtra("info"<span style="color: #000000">), Toast.LENGTH_SHORT);
+</span><span style="color: #008080">13</span>         t.setGravity(Gravity.TOP,0,0<span style="color: #000000">);
+</span><span style="color: #008080">14</span> <span style="color: #000000">        t.show();
+</span><span style="color: #008080">15</span> <span style="color: #000000">    }
+</span><span style="color: #008080">16</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>生成MyReceiver.java的同时，修改AndroidMainfest.xml配置文件中的代码：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> &lt;?xml version="1.0" encoding="utf-8"?&gt;
+<span style="color: #008080"> 2</span> &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<span style="color: #008080"> 3</span>     <span style="color: #0000ff">package</span>="com.example.administrator.day19"&gt;
+<span style="color: #008080"> 4</span> &lt;uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/&gt;
+<span style="color: #008080"> 5</span>     &lt;<span style="color: #000000">application
+</span><span style="color: #008080"> 6</span>         android:allowBackup="true"
+<span style="color: #008080"> 7</span>         android:icon="@mipmap/ic_launcher"
+<span style="color: #008080"> 8</span>         android:label="@string/app_name"
+<span style="color: #008080"> 9</span>         android:supportsRtl="true"
+<span style="color: #008080">10</span>         android:theme="@style/AppTheme"&gt;
+<span style="color: #008080">11</span>         &lt;activity android:name=".MainActivity"&gt;
+<span style="color: #008080">12</span>             &lt;intent-filter&gt;
+<span style="color: #008080">13</span>                 &lt;action android:name="android.intent.action.MAIN" /&gt;
+<span style="color: #008080">14</span> 
+<span style="color: #008080">15</span>                 &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+<span style="color: #008080">16</span>             &lt;/intent-filter&gt;
+<span style="color: #008080">17</span>         &lt;/activity&gt;
+<span style="color: #008080">18</span>         <span style="color: #008000">//</span><span style="color: #008000">生成的receiver配置文件</span>
+<span style="color: #008080">19</span>         &lt;<span style="color: #000000">receiver
+</span><span style="color: #008080">20</span>             android:name=".MyReceiver"
+<span style="color: #008080">21</span>             android:enabled="true"
+<span style="color: #008080">22</span>             android:exported="true"&gt;
+<span style="color: #008080">23</span>             &lt;intent-filter&gt;
+<span style="color: #008080">24</span>             <span style="color: #008000">//</span><span style="color: #008000">自定义Action</span>
+<span style="color: #008080">25</span>                 &lt;action android:name="MLY" /&gt;
+<span style="color: #008080">26</span>             &lt;/intent-filter&gt;
+<span style="color: #008080">27</span>         &lt;/receiver&gt;
+<span style="color: #008080">28</span>     &lt;/application&gt;
+<span style="color: #008080">29</span> &lt;/manifest&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>最后在MainActivity.java文件中添加按钮点击事件，如下：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.BroadcastReceiver;
+</span><span style="color: #008080"> 2</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Context;
+</span><span style="color: #008080"> 3</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Intent;
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.IntentFilter;
+</span><span style="color: #008080"> 5</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.support.v7.app.AppCompatActivity;
+</span><span style="color: #008080"> 6</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.os.Bundle;
+</span><span style="color: #008080"> 7</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.Gravity;
+</span><span style="color: #008080"> 8</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.View;
+</span><span style="color: #008080"> 9</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.widget.Toast;
+</span><span style="color: #008080">10</span> 
+<span style="color: #008080">11</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> MainActivity <span style="color: #0000ff">extends</span><span style="color: #000000"> AppCompatActivity {
+</span><span style="color: #008080">12</span> <span style="color: #000000">    DynamicReceiver dynamicReceiver;
+</span><span style="color: #008080">13</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">14</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onCreate(Bundle savedInstanceState) {
+</span><span style="color: #008080">15</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onCreate(savedInstanceState);
+</span><span style="color: #008080">16</span> <span style="color: #000000">        setContentView(R.layout.activity_main);
+</span><span style="color: #008080">17</span> <span style="color: #000000">    }
+</span><span style="color: #008080">18</span>     <span style="color: #008000">//</span><span style="color: #008000">静态广播点击</span>
+<span style="color: #008080">19</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> send(View v){
+</span><span style="color: #008080">20</span>         Intent intent = <span style="color: #0000ff">new</span><span style="color: #000000"> Intent();
+</span><span style="color: #008080">21</span>         intent.setAction("MLY"<span style="color: #000000">);
+</span><span style="color: #008080">22</span>         intent.putExtra("info","panhouye"<span style="color: #000000">);
+</span><span style="color: #008080">23</span> <span style="color: #000000">        sendBroadcast(intent);
+</span><span style="color: #008080">24</span> <span style="color: #000000">    }
+</span><span style="color: #008080">25</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><br>至此，两种注册方式的实现代码演示完毕，欢迎探讨。</p>
+<h2>第二步：为方便后续分析，这里插入BroadcastReceiver的两种常用类型</h2>
+<h3><strong><span style="font-size: medium">（1</span><span style="font-size: medium">）</span><span style="font-size: medium">Normalbroadcasts</span><span style="font-size: medium">：默认广播</span></strong></h3>
+<p><span style="font-family: Calibri; font-size: medium">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>发送一个默认广播使用Context.sendBroadcast(）方法，普通广播对于多个接收者来说是完全异步的，通常每个接收者都无需等待即可以接收到广播，接收者相互之间不会有影响。对于这种广播，接收者无法终止广播，即无法阻止其他接收者的接收动作。</p>
+<h3><span style="font-size: medium"><strong>（2）orderedbroadcasts：有序广播</strong></span></h3>
+<p>&nbsp;&nbsp;&nbsp; 发送一个有序广播使用Context.sendorderedBroadcast(）方法，有序广播比较特殊，它每次只发送到优先级较高的接收者那里，然后由优先级高的接受者再传播到优先级低的接收者那里，优先级高的接收者有能力终止这个广播。</p>
+<p><span style="font-size: medium">发送有序广播：<span style="font-family: Calibri">sendorderedBroadCast()</span></span></p>
+<p>在注册广播中的&lt;intent-filter&gt;中使用android:priority属性。这个属性的范围在-1000到1000，数值越大，优先级越高。在广播接收器中使用setResultExtras方法将一个Bundle对象设置为结果集对象，传递到下一个接收者那里，这样优先级低的接收者可以用getResuttExtras获取到最新的经过处理的信息集合。使用sendorderedBroadcast方法发送有序广播时，需要一个权限参数，如果为null则表示不要求接收者声明指定的权限，如果不为null则表示接收者若要接收此广播，需声明指定权限。这样做是从安全角度考虑的，例如系统的短信就是有序广播的形式，一个应用可能是具有拦截垃圾短信的功能，当短信到来时它可以先接受到短信广播，必要时终止广播传递，这样的软件就必须声明接收短信的权限。</p>
+<h2>第三步：在默认广播下两种注册方式的比较</h2>
+<h3>（1）两种注册方式均不设置优先级</h3>
+<p>这里将动态与静态两种注册的广播触发集中在一个按钮上，显示效果如下（未设置优先级的情况下，先动态后静态）：</p>
+<p><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213001459839-2048272628.gif" alt=""></p>
+<p>这里同样不演示按钮布局文件，以及静态注册涉及AndroidMainfest.xml和MyReceiver.java文件。直接展示MainActicity.java的实现代码：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.BroadcastReceiver;
+</span><span style="color: #008080"> 2</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Context;
+</span><span style="color: #008080"> 3</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Intent;
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.IntentFilter;
+</span><span style="color: #008080"> 5</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.support.v7.app.AppCompatActivity;
+</span><span style="color: #008080"> 6</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.os.Bundle;
+</span><span style="color: #008080"> 7</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.Gravity;
+</span><span style="color: #008080"> 8</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.view.View;
+</span><span style="color: #008080"> 9</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.widget.Toast;
+</span><span style="color: #008080">10</span> 
+<span style="color: #008080">11</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> MainActivity <span style="color: #0000ff">extends</span><span style="color: #000000"> AppCompatActivity {
+</span><span style="color: #008080">12</span> <span style="color: #000000">    DynamicReceiver dynamicReceiver;
+</span><span style="color: #008080">13</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">14</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onCreate(Bundle savedInstanceState) {
+</span><span style="color: #008080">15</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onCreate(savedInstanceState);
+</span><span style="color: #008080">16</span> <span style="color: #000000">        setContentView(R.layout.activity_main);
+</span><span style="color: #008080">17</span>         IntentFilter filter = <span style="color: #0000ff">new</span><span style="color: #000000"> IntentFilter();
+</span><span style="color: #008080">18</span>         filter.addAction("panhouye"<span style="color: #000000">);
+</span><span style="color: #008080">19</span>         dynamicReceiver = <span style="color: #0000ff">new</span><span style="color: #000000"> DynamicReceiver();
+</span><span style="color: #008080">20</span> <span style="color: #000000">        registerReceiver(dynamicReceiver,filter);
+</span><span style="color: #008080">21</span> <span style="color: #000000">    }
+</span><span style="color: #008080">22</span>     <span style="color: #008000">//</span><span style="color: #008000">静态广播点击</span>
+<span style="color: #008080">23</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> send(View v){
+</span><span style="color: #008080">24</span>         Intent intent = <span style="color: #0000ff">new</span><span style="color: #000000"> Intent();
+</span><span style="color: #008080">25</span>         <span style="color: #008000">//</span><span style="color: #008000">设置与动态相同的Action，方便同时触发静态与动态</span>
+<span style="color: #008080">26</span>         intent.setAction("panhouye"<span style="color: #000000">);
+</span><span style="color: #008080">27</span>         intent.putExtra("info","潘侯爷"<span style="color: #000000">);
+</span><span style="color: #008080">28</span>         sendBroadcast(intent);<span style="color: #008000">//</span><span style="color: #008000">默认广播</span>
+<span style="color: #008080">29</span> <span style="color: #000000">    }
+</span><span style="color: #008080">30</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">31</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onPause() {
+</span><span style="color: #008080">32</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onPause();
+</span><span style="color: #008080">33</span>         unregisterReceiver(<span style="color: #0000ff">new</span><span style="color: #000000"> MyReceiver());
+</span><span style="color: #008080">34</span> <span style="color: #000000">    }
+</span><span style="color: #008080">35</span>     <span style="color: #0000ff">class</span> DynamicReceiver <span style="color: #0000ff">extends</span><span style="color: #000000"> BroadcastReceiver{
+</span><span style="color: #008080">36</span> <span style="color: #000000">        @Override
+</span><span style="color: #008080">37</span>         <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onReceive(Context context, Intent intent) {
+</span><span style="color: #008080">38</span>             Toast t = Toast.makeText(context,"动态广播："+ intent.getStringExtra("info"<span style="color: #000000">), Toast.LENGTH_SHORT);
+</span><span style="color: #008080">39</span>             t.setGravity(Gravity.TOP,0,0<span style="color: #000000">);
+</span><span style="color: #008080">40</span> <span style="color: #000000">            t.show();
+</span><span style="color: #008080">41</span> <span style="color: #000000">        }
+</span><span style="color: #008080">42</span> <span style="color: #000000">    }
+</span><span style="color: #008080">43</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3><strong>（2）将动态优先级设置为最低-1000，静态优先级设置为最高1000</strong></h3>
+<p>显示效果如下（动态仍先于静态被接收到）：</p>
+<p><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213001624776-789644625.gif" alt=""></p>
+<p><strong>MainActivity中动态优先级设置如下：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080">1</span> <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onCreate(Bundle savedInstanceState) {
+</span><span style="color: #008080">2</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onCreate(savedInstanceState);
+</span><span style="color: #008080">3</span> <span style="color: #000000">        setContentView(R.layout.activity_main);
+</span><span style="color: #008080">4</span>         IntentFilter filter = <span style="color: #0000ff">new</span><span style="color: #000000"> IntentFilter();
+</span><span style="color: #008080">5</span>         filter.addAction("panhouye"<span style="color: #000000">);
+</span><span style="color: #008080">6</span>         filter.setPriority(-1000);<span style="color: #008000">//</span><span style="color: #008000">设置动态优先级</span>
+<span style="color: #008080">7</span>         dynamicReceiver = <span style="color: #0000ff">new</span><span style="color: #000000"> DynamicReceiver();
+</span><span style="color: #008080">8</span> <span style="color: #000000">        registerReceiver(dynamicReceiver,filter);
+</span><span style="color: #008080">9</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>AndroidMainfest.xml中静态优先级设置如下：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080">1</span> &lt;<span style="color: #000000">receiver
+</span><span style="color: #008080">2</span>     android:name=".MyReceiver"
+<span style="color: #008080">3</span>     android:enabled="true"
+<span style="color: #008080">4</span>     android:exported="true"&gt;
+<span style="color: #008080">5</span>     <span style="color: #008000">//</span><span style="color: #008000">设置静态优先级</span>
+<span style="color: #008080">6</span>     &lt;intent-filter android:priority="1000"&gt;
+<span style="color: #008080">7</span>           &lt;action android:name="panhouye" /&gt;
+<span style="color: #008080">8</span>     &lt;/intent-filter&gt;
+<span style="color: #008080">9</span> &lt;/receiver&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h2>第四步：在有序广播下两种注册方式比较</h2>
+<p>静态广播1（优先级为200），静态广播2（优先级为300），静态广播3（优先级为400），静态广播优先级为（-100），动态广播优先级为0。显示效果如下：</p>
+<p><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213001841448-707845357.gif" alt=""></p>
+<p>出现顺序由优先级决定，由高到低分别为静态3-静态2-静态1-动-静态。（这里参照前文代码）</p>
+<h2><strong>第五步：接受打电话的广播，比较程序运行中与结束运行时，两种注册方式的比较</strong></h2>
+<p>本次比较采用比对Log的方式对两种注册方式进行比较，在MainActivity.java中会插入Activity全部生命周期用于检测Log分析。</p>
+<h4>AndroidMainfest.xml配置文件代码如下：</h4>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<span style="color: #008080"> 2</span>     <span style="color: #0000ff">package</span>="com.example.administrator.test19"&gt;
+<span style="color: #008080"> 3</span>     <span style="color: #008000">//</span><span style="color: #008000">添加拨打电话权限</span>
+<span style="color: #008080"> 4</span> &lt;uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/&gt;
+<span style="color: #008080"> 5</span>     &lt;<span style="color: #000000">application
+</span><span style="color: #008080"> 6</span>         android:allowBackup="true"
+<span style="color: #008080"> 7</span>         android:icon="@mipmap/ic_launcher"
+<span style="color: #008080"> 8</span>         android:label="@string/app_name"
+<span style="color: #008080"> 9</span>         android:supportsRtl="true"
+<span style="color: #008080">10</span>         android:theme="@style/AppTheme"&gt;
+<span style="color: #008080">11</span>         &lt;activity android:name=".MainActivity"&gt;
+<span style="color: #008080">12</span>             &lt;intent-filter&gt;
+<span style="color: #008080">13</span>                 &lt;action android:name="android.intent.action.MAIN" /&gt;
+<span style="color: #008080">14</span> 
+<span style="color: #008080">15</span>                 &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+<span style="color: #008080">16</span>             &lt;/intent-filter&gt;
+<span style="color: #008080">17</span>         &lt;/activity&gt;
+<span style="color: #008080">18</span>         &lt;<span style="color: #000000">receiver
+</span><span style="color: #008080">19</span>             android:name=".StaticReceiver"
+<span style="color: #008080">20</span>             android:enabled="true"
+<span style="color: #008080">21</span>             android:exported="true"&gt;
+<span style="color: #008080">22</span>             &lt;intent-filter&gt;
+<span style="color: #008080">23</span>                 <span style="color: #008000">//</span><span style="color: #008000">设置打电话对应的action</span>
+<span style="color: #008080">24</span>                 &lt;action android:name="android.intent.action.NEW_OUTGOING_CALL" /&gt;
+<span style="color: #008080">25</span>             &lt;/intent-filter&gt;
+<span style="color: #008080">26</span>         &lt;/receiver&gt;
+<span style="color: #008080">27</span>     &lt;/application&gt;
+<span style="color: #008080">28</span> &lt;/manifest&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>MainActivity.java中实现代码（<span style="color: #ff0000">动态注册将解除注册放在onDestory方法内是因为在真机测试过程中拨打电话，需要返回主页面，而此操作会造成Activity处于onStop状态，若放在onPause中，将无法在程序运行时启用动态注册接受广播。真实环境下建议在onpause下解除注册，尽早释放内存，避免内存溢出</span>）：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.BroadcastReceiver;
+</span><span style="color: #008080"> 2</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Context;
+</span><span style="color: #008080"> 3</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Intent;
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.IntentFilter;
+</span><span style="color: #008080"> 5</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.support.v7.app.AppCompatActivity;
+</span><span style="color: #008080"> 6</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.os.Bundle;
+</span><span style="color: #008080"> 7</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.util.Log;
+</span><span style="color: #008080"> 8</span> 
+<span style="color: #008080"> 9</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> MainActivity <span style="color: #0000ff">extends</span><span style="color: #000000"> AppCompatActivity {
+</span><span style="color: #008080">10</span>     DynamicReceiver dynamicReceiver;<span style="color: #008000">//</span><span style="color: #008000">声明动态注册广播接收</span>
+<span style="color: #008080">11</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">12</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onCreate(Bundle savedInstanceState) {
+</span><span style="color: #008080">13</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onCreate(savedInstanceState);
+</span><span style="color: #008080">14</span> <span style="color: #000000">        setContentView(R.layout.activity_main);
+</span><span style="color: #008080">15</span>         IntentFilter filter = <span style="color: #0000ff">new</span><span style="color: #000000"> IntentFilter();
+</span><span style="color: #008080">16</span>         filter.addAction("android.intent.action.NEW_OUTGOING_CALL"<span style="color: #000000">);
+</span><span style="color: #008080">17</span>         dynamicReceiver = <span style="color: #0000ff">new</span><span style="color: #000000"> DynamicReceiver();
+</span><span style="color: #008080">18</span> <span style="color: #000000">        registerReceiver(dynamicReceiver,filter);
+</span><span style="color: #008080">19</span>         Log.i("Tag","Activity-onCreate"<span style="color: #000000">);
+</span><span style="color: #008080">20</span> <span style="color: #000000">    }
+</span><span style="color: #008080">21</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">22</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onStart() {
+</span><span style="color: #008080">23</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onStart();
+</span><span style="color: #008080">24</span>         Log.i("Tag","Activity-onStart"<span style="color: #000000">);
+</span><span style="color: #008080">25</span> <span style="color: #000000">    }
+</span><span style="color: #008080">26</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">27</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onResume() {
+</span><span style="color: #008080">28</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onResume();
+</span><span style="color: #008080">29</span>         Log.i("Tag","Activity-onResume"<span style="color: #000000">);
+</span><span style="color: #008080">30</span> <span style="color: #000000">    }
+</span><span style="color: #008080">31</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">32</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onPause() {
+</span><span style="color: #008080">33</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onPause();
+</span><span style="color: #008080">34</span>         Log.i("Tag","Activity-onPause"<span style="color: #000000">);
+</span><span style="color: #008080">35</span> <span style="color: #000000">    }
+</span><span style="color: #008080">36</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">37</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onStop() {
+</span><span style="color: #008080">38</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onPause();
+</span><span style="color: #008080">39</span>         Log.i("Tag","Activity-onStop"<span style="color: #000000">);
+</span><span style="color: #008080">40</span> <span style="color: #000000">    }
+</span><span style="color: #008080">41</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080">42</span>     <span style="color: #0000ff">protected</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onDestroy() {
+</span><span style="color: #008080">43</span>         <span style="color: #0000ff">super</span><span style="color: #000000">.onDestroy();
+</span><span style="color: #008080">44</span>         Log.i("Tag","Activity-onDestroy"<span style="color: #000000">);
+</span><span style="color: #008080">45</span> <span style="color: #000000">        unregisterReceiver(dynamicReceiver);
+</span><span style="color: #008080">46</span> <span style="color: #000000">    }
+</span><span style="color: #008080">47</span>     <span style="color: #0000ff">class</span> DynamicReceiver <span style="color: #0000ff">extends</span><span style="color: #000000"> BroadcastReceiver{
+</span><span style="color: #008080">48</span> <span style="color: #000000">        @Override
+</span><span style="color: #008080">49</span>         <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onReceive(Context context, Intent intent) {
+</span><span style="color: #008080">50</span>             Log.i("Tag","动态注册广播接收到您正在拨打电话"+<span style="color: #000000">getResultData());
+</span><span style="color: #008080">51</span> <span style="color: #000000">        }
+</span><span style="color: #008080">52</span> <span style="color: #000000">    }
+</span><span style="color: #008080">53</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>StaticReceiver.java中实现代码：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.BroadcastReceiver;
+</span><span style="color: #008080"> 2</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Context;
+</span><span style="color: #008080"> 3</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.content.Intent;
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">import</span><span style="color: #000000"> android.util.Log;
+</span><span style="color: #008080"> 5</span> <span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> StaticReceiver <span style="color: #0000ff">extends</span><span style="color: #000000"> BroadcastReceiver {
+</span><span style="color: #008080"> 6</span>     <span style="color: #0000ff">public</span><span style="color: #000000"> StaticReceiver() {
+</span><span style="color: #008080"> 7</span> <span style="color: #000000">    }
+</span><span style="color: #008080"> 8</span> <span style="color: #000000">    @Override
+</span><span style="color: #008080"> 9</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> onReceive(Context context, Intent intent) {
+</span><span style="color: #008080">10</span>         Log.i("Tag","静态注册广播接收到您正在拨打电话"+<span style="color: #000000">getResultData());
+</span><span style="color: #008080">11</span> <span style="color: #000000">    }
+</span><span style="color: #008080">12</span> }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<h3><strong><span style="color: #ff0000">（1）在未退出Activity时，拨打电话，Log如下：</span></strong></h3>
+<p><strong><span style="color: #ff0000"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213002137323-731668939.png" alt=""></span></strong></p>
+<p>由Log可知在未退出Activity是，两种方式均可接受到广播。</p>
+<h3><span style="color: #ff0000">（2）在退出Activity时，拨打电话，Log如下（即便不解除注册，动态仍无法接受到广播）：</span></h3>
+<p><span style="color: #ff0000"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/1068139-20161213002215667-444296253.png" alt=""></span></p>
+<p>在退出程序（Activity）时，只有静态注册方式可以接受到广播。</p>
+<h2>第六步：总结两种注册方式特点</h2>
+<p><span style="font-size: medium">广播接收器注册一共有两种形式：静态注册和动态注册．</span></p>
+<p><span style="font-size: medium">两者及其接收广播的区别：</span></p>
+<p><span style="font-size: medium">（<span style="font-family: Calibri">1</span>）动态注册广播不是常驻型广播，也就是说广播跟随<span style="font-family: Calibri">Activity</span>的生命周期。注意在<span style="font-family: Calibri">Activity</span>结束前，移除广播接收器。</span></p>
+<p><span style="font-size: medium">静态注册是常驻型，也就是说当应用程序关闭后，如果有信息广播来，程序也会被系统调用自动运行。</span></p>
+<p><span style="font-size: medium">（<span style="font-family: Calibri">2</span>）当广播为有序广播时：优先级高的先接收（不分静态和动态）。同优先级的广播接收器，动态优先于静态</span></p>
+<p><span style="font-size: medium">（<span style="font-family: Calibri">3</span>）同优先级的同类广播接收器，静态：先扫描的优先于后扫描的，动态：先注册的优先于后注册的。</span></p>
+<p><span style="font-size: medium">（<span style="font-family: Calibri">4</span>）当广播为默认广播时：无视优先级，动态广播接收器优先于静态广播接收器。同优先级的同类广播接收器，静态：先扫描的优先于后扫描的，动态：先注册的优先于后册的。</span></p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/panhouye/category/914455.html" target="_blank">Android</a>,<a href="http://www.cnblogs.com/panhouye/category/912902.html" target="_blank">技术分享</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/panhouye/tag/Android/">Android</a>, <a href="http://www.cnblogs.com/panhouye/tag/BroadcastReceiver/">BroadcastReceiver</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(6168156,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;432cd643-9fb0-e611-845c-ac853d9f53ac&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/panhouye/" target="_blank"><img src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/20161122183537.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/panhouye/">潘侯爷</a><br>
+            <a href="http://home.cnblogs.com/u/panhouye/followees">关注 - 4</a><br>
+            <a href="http://home.cnblogs.com/u/panhouye/followers">粉丝 - 16</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;432cd643-9fb0-e611-845c-ac853d9f53ac&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(6168156,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(6168156,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/panhouye/p/6161040.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/panhouye/p/6161040.html" title="发布于2016-12-11 23:32">Android种使用Notification实现通知管理以及自定义通知栏（Notification示例四）</a><br><a href="http://www.cnblogs.com/panhouye/p/6175633.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/panhouye/p/6175633.html" title="发布于2016-12-14 00:03">Android中AlarmManager使用示例（持续更新，已经更改）</a><br></div>
+</div>
+
+
+		</div>
+		<div class="itemdesc">
+			发表于 <span id="post-date">2016-12-13 00:27</span> <a href="http://www.cnblogs.com/panhouye/">潘侯爷</a> 阅读(<span id="post_view_count">725</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=6168156" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/panhouye/p/6168156.html#" onclick="AddToWz(6168156);return false;">收藏</a>
+		</div>
+	</div>
+	<div class="seperator">&nbsp;</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=318415,cb_entryId=6168156,cb_blogApp=currentBlogApp,cb_blogUserGuid='432cd643-9fb0-e611-845c-ac853d9f53ac',cb_entryCreatedDate='2016/12/13 0:27:00';loadViewCount(cb_entryId);</script>
+	
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/panhouye/p/6168156.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/panhouye/p/6168156.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://click.aliyun.com/m/10467/" target="_blank">【秘密】藏在春节红包里的技术秘密</a><br><a href="https://group.cnblogs.com/topic/76017.html" target="_blank">【活动】一元专享1500元微软智能云Azure</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://click.aliyun.com/m/10467/" target="_blank"><img width="300" height="250" src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/24442-20170215141525175-203290624.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/563118/" target="_blank">中兴将在MWC 2017首推基于5G网路的 “千兆级” 手机</a><br> ·  <a href="http://news.cnblogs.com/n/563117/" target="_blank">我不希望有一天要靠无人机完成授粉，愿蜜蜂在世界不消失</a><br> ·  <a href="http://news.cnblogs.com/n/563116/" target="_blank">滴滴挖角高德：敌友关系难断，及滴滴的地图野心</a><br> ·  <a href="http://news.cnblogs.com/n/563115/" target="_blank">苹果上线WWDC17页面，时隔多年重回圣何塞都可能有什么寓意？</a><br> ·  <a href="http://news.cnblogs.com/n/563114/" target="_blank">李在镕被批捕留下管理层空缺 三星未来掌舵人或来自这三位</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&app=product_download&a=reg&utm_source=csdn&utm_medium=pic&utm_campaign=show&utm_content=v10&utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img width="468" height="60" src="./Android中BroadcastReceiver的两种注册方式（静态和动态）详解 - 潘侯爷 - 博客园_files/24442-20170118152220281-363324784.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+                    </div></td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+
+
+</body></html>

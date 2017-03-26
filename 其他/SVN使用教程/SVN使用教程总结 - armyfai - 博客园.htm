@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://www.cnblogs.com/armyfai/p/3985660.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./SVN使用教程总结 - armyfai - 博客园_files/ca-pub-4210569241504288.js"></script><script async="" src="./SVN使用教程总结 - armyfai - 博客园_files/analytics.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVN使用教程总结 - armyfai - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./SVN使用教程总结 - armyfai - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./SVN使用教程总结 - armyfai - 博客园_files/bundle-coffee.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="./SVN使用教程总结 - armyfai - 博客园_files/bundle-coffee-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/armyfai/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/armyfai/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/armyfai/wlwmanifest.xml">
+<script src="./SVN使用教程总结 - armyfai - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'armyfai', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./SVN使用教程总结 - armyfai - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/armyfai/"><img id="blogLogo" src="./SVN使用教程总结 - armyfai - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/armyfai/">armyfai博客</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li></li>
+	<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/armyfai/">首页</a></li>
+	<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li></li>
+	<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/armyfai/rss">订阅</a>
+	<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/armyfai/rss"><img src="./SVN使用教程总结 - armyfai - 博客园_files/xml.gif" alt="订阅"></a></li>
+</ul>
+
+
+			<div class="blogStats">
+				
+				
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./SVN使用教程总结 - armyfai - 博客园_files/SVN使用教程总结 - armyfai - 博客园.htm">SVN使用教程总结</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>SVN简介：</p>
+<p align="left">&nbsp;<strong>为什么要使用SVN？</strong></p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序员在编写程序的过程中，每个程序员都会生成很多不同的版本，这就需要程序员有效的管理代码，在需要的时候可以迅速，准确取出相应的版本。</p>
+<p align="left"><strong>Subversion是什么？</strong></p>
+<p>&nbsp;&nbsp; 它是一个自由/开源的版本控制系统，一组文件存放在中心版本库，记录每一次文件和目录的修改，Subversion允许把数据恢复到早期版本，或是检查数据修改的历史，Subversion可以通过网络访问它的版本库，从而使用户在不同的电脑上进行操作。</p>
+<p>一：SVN服务器搭建和使用。</p>
+<p><span lang="EN-US">&nbsp; &nbsp;<strong>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先来下载和搭建<span lang="EN-US">SVN服务器<span lang="EN-US">,下载地址如下<span lang="EN-US">:&nbsp;<span lang="EN-US"><a href="http://subversion.apache.org/packages.html">http://subversion.apache.org/packages.html</a>，进入网址后，滚动到浏览器最底部看到如下截图：</span></span></span></span></strong></span></p>
+<p><span lang="EN-US">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130940097464156.png" alt=""></span></p>
+<p>&nbsp; &nbsp; &nbsp; 个人认为最好用<span lang="EN-US">VisualSVN server 服务端和<span lang="EN-US">&nbsp;TortoiseSVN客户端搭配使用<span lang="EN-US">.<span lang="EN-US">&nbsp;点开上面的<span lang="EN-US">VisualSVN连接<span lang="EN-US">,下载<span lang="EN-US">VisualSVN server,下载完成后双击安装，如下图：</span></span></span></span></span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130940357152923.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p>点击<span lang="EN-US">Next下一步，如下：</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130940544815722.png" alt=""></span></p>
+<p>然后再点击<span lang="EN-US">Next项，下一步，如下：</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130942171846989.png" alt="">&nbsp;</span></p>
+<p>点击【<span lang="EN-US">Next】 如下：</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130941151521908.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p><img src="./SVN使用教程总结 - armyfai - 博客园_files/130942509964894.png" alt=""></p>
+<p><span lang="EN-US">Location是指<span lang="EN-US">VisualSVN Server的安装目录<span lang="EN-US">,Repositorys是指定你的版本库目录<span lang="EN-US">.Server Port指定一个端口<span lang="EN-US">,Use secure connection勾山表示使用安全连接<span lang="EN-US">,</span></span></span></span></span></span></p>
+<p>点击<span lang="EN-US">Next,进入下一步<span lang="EN-US">,如下图<span lang="EN-US">:</span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130943132776319.png" alt=""></span></p>
+<p>再点击【<span lang="EN-US">Install】<span lang="EN-US">,进入如下安装图：</span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130943304963093.png" alt=""></span></p>
+<p>等待安装完成后，点击【<span lang="EN-US">next】，进入下一步：如下图</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130943551219603.png" alt=""></span></p>
+<p>点击【<span lang="EN-US">Finish】即可完成安装。安装完成后<span lang="EN-US">,启动<span lang="EN-US">VisualSVN Server Manager,如图<span lang="EN-US">:</span></span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130944137937132.png" alt=""></span></p>
+<p>可以在窗口的右边看到版本库的一些信息<span lang="EN-US">,比如状态<span lang="EN-US">,日志<span lang="EN-US">,用户认证<span lang="EN-US">,版本库等<span lang="EN-US">.</span></span></span></span></span></p>
+<p>要建立版本库<span lang="EN-US">,需要右键单击左边窗口的<span lang="EN-US">Repositores,如下图<span lang="EN-US">:</span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130944400126654.png" alt=""></span></p>
+<p>在弹出的右键菜单中选择<span lang="EN-US">Create New Repository或者新建<span lang="EN-US">-&gt;Repository:</span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130945042624979.png" alt=""></span></p>
+<p>进入下一步，如下图：</p>
+<p><img src="./SVN使用教程总结 - armyfai - 博客园_files/130945270592548.png" alt=""></p>
+<p>点击【下一步】，如下图：</p>
+<p><img src="./SVN使用教程总结 - armyfai - 博客园_files/130945478095475.png" alt=""></p>
+<p>点击【<span lang="EN-US">create】，如下图：</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130946035597264.png" alt=""></span></p>
+<p>点击【<span lang="EN-US">Finish】即可完成基本创建。</span></p>
+<p><strong>&nbsp;&nbsp;</strong><strong><strong>2. 需要建立用户和组，并且需要分配权限</strong>。</strong></p>
+<p>&nbsp;&nbsp;1. 在VisualSVN Server Manager窗口的左侧右键单击用户组,选择Create User或者新建-&gt;User,如图:</p>
+<p>&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130949016213832.png" alt=""></p>
+<p>点击<span lang="EN-US">User后，进入如下图：</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130949204342618.png" alt=""></span></p>
+<p>填写<span lang="EN-US">Username和<span lang="EN-US">password后，点击<span lang="EN-US">ok按钮后，进入如下图：</span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130949386523219.png" alt=""></span></p>
+<p>点击上面的【<span lang="EN-US">Add】按钮后，如下图</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130949555901779.png" alt=""></span></p>
+<p>增加<span lang="EN-US">longen0707到用户中<span lang="EN-US">(如果有多个用户，操作一样<span lang="EN-US">)。</span></span></span></p>
+<p><span lang="EN-US">&nbsp; 2 . &nbsp;&nbsp;然后我们建立用户组<span lang="EN-US">,在<span lang="EN-US">VisualSVN Server Manager窗口的左侧右键单击用户组<span lang="EN-US">,选择<span lang="EN-US">Create Group或者新建<span lang="EN-US">-&gt;Group,如图<span lang="EN-US">:</span></span></span></span></span></span></span></p>
+<p><span lang="EN-US"><span lang="EN-US">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130950456215926.png" alt=""></span></span></p>
+<p>点击【<span lang="EN-US">Group】按钮后，进入如下图：</span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130951043091983.png" alt=""></span></p>
+<p>在弹出窗口中填写<span lang="EN-US">Group name为<span lang="EN-US">Developers,然后点<span lang="EN-US">Add按钮<span lang="EN-US">,在弹出的窗口中选择<span lang="EN-US">Developer,加入到这个组<span lang="EN-US">,然后点<span lang="EN-US">Ok.</span></span></span></span></span></span></span></p>
+<p>接下来我们需要给用户组设置权限，在<span lang="EN-US">MyRepository上单击右键<span lang="EN-US">,选择属性<span lang="EN-US">,如图<span lang="EN-US">:</span></span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130951240591083.png" alt=""></span></p>
+<p>在弹出的对话框中<span lang="EN-US">,选择<span lang="EN-US">Security选项卡<span lang="EN-US">,点击<span lang="EN-US">Add按钮<span lang="EN-US">,选中<span lang="EN-US">longen0707,然后添加进来<span lang="EN-US">,权限设置为<span lang="EN-US">Read/Write,如下图<span lang="EN-US">:</span></span></span></span></span></span></span></span></span></p>
+<p><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130951476219251.png" alt=""></span></p>
+<p>点击【确定】按钮即可。</p>
+<p>二：客户端SVN安装。</p>
+<p>&nbsp;<strong>1.首先我们需要下载 ”svn小乌龟”后，进行安装。比如我下载如下的：</strong></p>
+<p>&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130952559814500.png" alt=""></p>
+<p>&nbsp; &nbsp;安装完成后，比如在我的项目在qiandaun1中，我右键就可以看到如下：</p>
+<p>&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130953259653808.png" alt=""></p>
+<p align="left">说明snv已经安装成功了！</p>
+<p align="left"><strong>2：checkout项目文件。</strong></p>
+<p align="left">&nbsp; &nbsp;&nbsp;新建或者进入目录下(比如qianduan1)，右键 --&gt; Svn Checkout --&gt;</p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130954311373629.png" alt=""></p>
+<p align="left">其中<span lang="EN-US">URL我可以在<span lang="EN-US">SVN服务器获取到，我在<span lang="EN-US">myRepositories下右键新建文件</span></span></span></p>
+<p align="left"><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130955243404677.png" alt="">&nbsp;</span></p>
+<p align="left"><span lang="EN-US">qianduan文件被建立，然后比如我这样右键<span lang="EN-US">&nbsp;--&gt; copy下</span></span></p>
+<p align="left"><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130955550127438.png" alt=""></span></p>
+<p align="left">即可。</p>
+<p align="left">将复制的版本库URL粘贴上,如下图：</p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130956201842848.png" alt=""></p>
+<p align="left">点击【ok】按钮后，就可以检索出来，如下：</p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/130956434024588.png" alt=""></p>
+<p align="left">如下图：</p>
+<p align="left">&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130957017156161.png" alt=""></p>
+<p align="left"><strong>注意事项：</strong></p>
+<p align="left"><strong>&nbsp;&nbsp;&nbsp;</strong>.svn这个隐藏目录记录着两项关键信息：工作文件的基准版本和一个本地副本最后更新的时间戳，千万不要手动修改或者删除这个.svn隐藏目录和里面的文件!!,否则将会导致你本地的工作拷贝(静态试图)被破坏，无法再进行操作。</p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp;&nbsp;<strong>1) &nbsp; &nbsp;<span lang="EN-US">TortoiseSVN图标介绍</span></strong></span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130958036843028.png" alt="">&nbsp;&nbsp;</span></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;一个新检出的工作复本使用绿色的对勾重载，表示<span lang="EN-US">Subversion状态正常。</span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130958194344817.png" alt="">&nbsp;</span></p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;在你开始编辑一个文件之后，状态就变成了已修改，而图标重载已变成了红色感叹号。通过这种方式，你可以很容易地看出那些文件从你上次更新工作复本被修改过，且需要提交。</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130958514341307.png" alt="">&nbsp;&nbsp;如果在提交的过程中出现了冲突，图标就会变成了黄色感叹号。</p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/130959104658494.png" alt="">&nbsp;&nbsp;</p>
+<p class="ListParagraph" align="left">加号告诉你有一个文件或者目录已经被计划加入到版本控制中。</p>
+<p class="ListParagraph" align="left"><strong><span lang="EN-US">2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span lang="EN-US">TortoiseSVN Client基础操作:</span></span></strong></p>
+<p class="ListParagraph" align="left"><span lang="EN-US"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;<strong>SVN检出(SVN Checkout)</strong></span></span></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;在文件夹或者目录下单击右键&nbsp;<span lang="EN-US">–<span lang="EN-US">&gt; 选择<span lang="EN-US">SVN检出，如下图所示</span></span></span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp; &nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131000197469827.jpg" alt=""></span></p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;点击后，在弹开窗口的版本库<span lang="EN-US">url框中输入版本库的目录地址，然后点击确定，如下图</span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131000495273963.png" alt=""></span></p>
+<p class="ListParagraph" align="left">再点击<span lang="EN-US">ok按钮后，如下图：</span></p>
+<p class="ListParagraph" align="left">在弹出的对话框中输入用户名和密码，验证成功后，项目文件开始从远程服务器下载到本地工作目录中。</p>
+<p class="ListParagraph" align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131001138871787.png" alt=""></p>
+<p class="ListParagraph" align="left">点击<span lang="EN-US">ok按钮后，即可获取完成，如下图所示：</span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US"><strong>&nbsp;2. &nbsp;</strong><strong>增加(Add)</strong></span></p>
+<p class="ListParagraph" align="left">&nbsp; 在test项目文件下，新建一个b.txt文件，提交到版本库的方法如下2种：</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;1. 先提到变更列表中，再commit到配置库中，选择新增文件，右键SVN菜单执行“Add“操作提交到”变更列表中”，然后右键SVN菜单执行”SVN Commit”提交到版本库中。</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;2. 不提交到变更列表中，而是直接commit配置库中，选择该文件，右键svn菜单执行”SVN Commit”操作。</p>
+<p class="ListParagraph" align="left"><strong>&nbsp;&nbsp;3. &nbsp;</strong><strong>删除(Delete)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;如果被删除的文件还未入版本库，则可以直接使用操作系统的删除操作删除该文件。</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;如果被删除的文件已入版本库，则删除的方法如下：</p>
+<ol>
+<li>选择被删除文件，右键svn菜单执行”delete”操作，然后选择被删除文件的父目录，右键svn菜单执行”SVN Commit”.</li>
+</ol>
+<p class="ListParagraph" align="left">使用操作系统的删除操作删除该文件，然后选择被删除文件的父目录，右键svn菜单执行”SVN Commit”,在变更列表中选择被删除的文件。如下图：</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131003076212175.png" alt=""></p>
+<p class="ListParagraph" align="left"><strong>&nbsp;4.&nbsp;&nbsp;</strong><strong>改名(Rename)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; 修改文件名，选中需要重命名的文件或文件夹，然后右键“TortoiseSVNàRename“，在弹出的对话框中输入新名称，点击”ok”按钮，并将修改文件名后的文件或文件夹通过 “SVN Commit”提交到SVN服务器上。</p>
+<p class="ListParagraph" align="left"><strong>&nbsp;5. &nbsp;</strong><strong>SVN</strong><strong>还原(SVN Revert)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; 右击想要回退的文件或者文件夹，在TortoiseSVN弹出菜单中选择”Update to reversion…” 然后会弹出一个窗口，如下：</p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131004377467407.png" alt=""></p>
+<p class="ListParagraph" align="left">比如说我们要回退到第<span lang="EN-US">10个版本只需要在<span lang="EN-US">Revision中填写相应的版本号，然后点击<span lang="EN-US">ok即可。</span></span></span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp;<strong>6. &nbsp;</strong><strong>检查更新(Check for modifications)</strong></span></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;此功能可以显示你所做的修改有哪些还没有提交的，此功能不光能看到对文件的修改变化，所有的变化都能看到，包括增加文件或者目录，删除文件或者目录，移动文件或者目录等，如果你点击了检查版本库，那你还可以看到版本库里的改动，既别人提交了哪些文件的改动，你还没更新到本地，如下：</p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131005199818404.png" alt=""></p>
+<p class="ListParagraph" align="left">&nbsp;<strong>7.&nbsp;&nbsp;</strong><strong>SVN</strong><strong>更新(SVN Update)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; 更新本地代码与SVN服务器上最新的版本一致，只要在需要更新的文件夹上点击右键或者在文件下空白处点击右键，选择”SVN Update” (获取指定版本中的内容，点击右键执行SVN菜单中的“Update to reversion“)，就可以了。</p>
+<p>&nbsp;<strong>7.1 如何解决冲突文件</strong></p>
+<p align="left">&nbsp; &nbsp; &nbsp;对于每个冲突的文件Subversion在你的目录下放置了三个文件：如下：</p>
+<p align="left">&nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131008249027809.png" alt=""></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;为什么会产生冲突代码呢？原因很简单就是因为不同的人，同时修改了同一个文件的同一个地方，这时候，他提交了，我没有提交，我就提交不了，这个时候我们要进行先更新，然后在进行提交即可，那如果产生冲突，会生成如上<span lang="EN-US">3个文件。<span lang="EN-US">&nbsp;</span></span></p>
+<p align="left"><strong>解决方案如下</strong>：</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 首先我们可以看下1.txt代码如下：</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine</p>
+<p align="left">&nbsp; &nbsp; &nbsp; &nbsp; aaaasdf11222333 dderderder</p>
+<p align="left">&nbsp; &nbsp; &nbsp; &nbsp; =======</p>
+<p align="left">&nbsp; &nbsp; &nbsp; &nbsp;b&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r5</p>
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 然后我去掉多余的代码，1.txt变成这样</p>
+<p align="left">&nbsp; &nbsp; &nbsp; aaaasdf11222333 dderderder</p>
+<p align="left">&nbsp; &nbsp; &nbsp; 进行提交，还是提交不了，如下所示：</p>
+<p align="left">&nbsp; &nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131009310127945.png" alt=""></p>
+<p align="left">&nbsp;&nbsp;为什么？因为冲突会产生上面的三个文件，有上面3个文件存在肯定提交不了，这三个文件代码及解释如下：</p>
+<ol>
+<li>1.txt.mine 是冲突前自己的文件。可以看下内容如下：</li>
+</ol>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; aaaasdf11222333 dderderder</p>
+<p>&nbsp; &nbsp; &nbsp; 2. &nbsp;1.txt.r4 是冲突前本地的版本文件</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;内容如下：aaaasdf11222333</p>
+<p>&nbsp; &nbsp; &nbsp; 3. &nbsp;1.txt.r5&nbsp; 是别人赶在你之前提交的版本</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; 内容如下： b</p>
+<p align="left">其中,&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mine .....=======之间的代码是你自己的，而======......&gt;&gt;&gt;&gt;&gt;&gt;&gt;.r5是别人与你冲突的代码部分</p>
+<p align="left">这样就不难理解为什么会产生冲突这种奇怪的东西了，因为你们修改的同一块代码，当然会产生冲突。</p>
+<p align="left">解决方案如下：</p>
+<ol>
+<li>假如我现在的1.txt中的冲突内容如下：</li>
+</ol>
+<p align="left">&nbsp; &nbsp; &nbsp; &lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; &nbsp;6666666666666600000</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; &nbsp;=======</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; 66666666666aaaaaaaaaa666</p>
+<p align="left">&nbsp; &nbsp; &nbsp; &gt;&gt;&gt;&gt;&gt;&gt;&gt; .r16<br><strong>&nbsp; &nbsp; 前面说过&nbsp; &lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine …… =======</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; ……之间的代码是我未产生冲突之前修改的代码，</p>
+<p align="left"><strong>&nbsp; &nbsp; =======&nbsp;</strong><strong>………&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r16</strong>&nbsp;这中间……的代码是别人与我冲突代码的部分，从上面的代码可以看到 aaaaaaaaa是我同事新增的 ,00000是我后增加的。</p>
+<ol><ol>
+<li>使用revert(回滚)操作，该操作表示用户放弃自己的更新代码，然后直接提交，这个时候你的代码就会使服务器上最新的代码，即A用户提交的新代码，你的代码不会被提交，如下所示：<img src="./SVN使用教程总结 - armyfai - 博客园_files/131011113714386.png" alt=""><img src="./SVN使用教程总结 - armyfai - 博客园_files/131011495593086.png" alt="">
+<p class="ListParagraph" align="left">点击<span lang="EN-US">ok按钮后 可以看到其他三个文件都自动删掉了，<span lang="EN-US">1.txt代码变成如下代码：</span></span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">66666666666aaaaaaaaaa666</span></p>
+<p class="ListParagraph" align="left">也就是<span lang="EN-US">a用户提交的代码，我自己更新的代码需要自己动手复制进去即可提交<span lang="EN-US">commit。</span></span></p>
+
+</li>
+<li>假如我现在3.txt产生冲突代码如下：
+<p class="ListParagraph" align="left"><span lang="EN-US">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;.mine</span></p>
+<p class="ListParagraph" align="left">333333338888888888888=======</p>
+<p class="ListParagraph" align="left">3333cccccccccc3333&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r16</p>
+<p class="ListParagraph" align="left">通过第一点我们知道，333333338888888888888这个内容是我修改后，未产生冲突之前的内容，3333cccccccccc3333这个代码是A用户提交的代码，从上面得知 A用户新增内容是ccccccc，而我新增的内容是8888888。</p>
+<p class="ListParagraph" align="left">那么第二种解决方法如下：</p>
+
+</li>
+
+</ol></ol>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 选择文件-&gt;右键Editconficts：这种方法需要冲突双方经过协商之后将代码更改统一之后再提交。不仅解决了冲突而且还保证了代码是正确的，因为只有一方的代码被提交.</p>
+<p>&nbsp; &nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131015325908149.png" alt=""></p>
+<p align="left">&nbsp; &nbsp;如上图所示，红色的部分是冲突代码：theirs表示当前服务器端最新的代码，Mine表示自己修改后的代码，Merged表示合并后的代码。点击红色后右键选择：use this text block就可以将该部分代码作为合并后的代码</p>
+<p align="left">接下来再说说由于冲突导致重要代码被覆盖的情况。冲突发生时如果采取的措施不对可能会导致部分代码丢失，如果想要还原之前的代码也很容易。</p>
+<p align="left">选择文件-&gt;右键选择show log在这里面你可以看见之前提交的所有版本，找到你想要恢复的版本右键选择revert to this version 就可以恢复了.</p>
+<p align="left"><strong>SVN</strong><strong>提交(SVN Commit)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; Svn的提交是将在工作空间做的修改进行提交，包括文件内容的修改，文件或目录的添加，删除，命名，移动等操作。如下图所示:</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131016065274081.png" alt=""></p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;<strong>8.</strong>&nbsp;&nbsp;<strong>&nbsp;</strong><strong>显示日志(Show log)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; &nbsp;通过此功能可以查到谁，什么时候，对那个目录下的那些文件进行了那些操作，如下图：</p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131016571997100.png" alt=""></p>
+<p class="ListParagraph" align="left">&nbsp;<strong>9</strong>. &nbsp;<strong>版本库浏览(Repo-browser)</strong></p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp;此功能是用来浏览需要查看的资料库，在本地文件夹下点击右键，选择<span lang="EN-US">TortoiseSVN<span lang="EN-US">à<span lang="EN-US">Repo-browser,在弹出的对话框中输入资料库地址，再输入用户名和密码，就能查看到你需要查看到版本库的内容，在这你还能看到那些文件被谁锁定了，如下图：</span></span></span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US">&nbsp; &nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131017565593898.png" alt=""></span></p>
+<p>三： 创建分支合并相互操作</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp;项目中为何要创建分支，及合并？</p>
+<p class="ListParagraph" align="left">&nbsp; &nbsp; &nbsp; 比如我现在项目所有的文件放在主干上<span lang="EN-US">(trunk)中，由于需求的变更，需要增加新的需求，但是我们主干上还要继续往下开发，在此我们可以新建一个分支，来做增加新的需求那一块，主干上继续开发，等分支上代码没有问题的时候，再合并到主干上来。</span></p>
+<p class="ListParagraph" align="left">创建分支的最大的目的就是跟主线进行并行开发时候不影响主线的开发。</p>
+<p align="left"><strong>&nbsp; &nbsp;如何操作？</strong></p>
+<p align="left"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&nbsp;</strong>假如我本地新建一个文件夹test下有2个文件夹trunk(存放主干上的代码)和branch(存放分支上的代码)，如下所示：</p>
+<p align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131019523091470.png" alt=""></p>
+<p align="left"><strong>一：先提取主干上的代码。</strong></p>
+<p align="left">&nbsp; &nbsp;点击trunk --&gt; 鼠标右键 --&gt; 点击SVN Checkout --&gt; 弹出一个对话框，如下图所示：</p>
+<p align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131020229963162.png" alt=""></p>
+<p align="left">其中上面的URL是从服务器VisualSVN Server上获取的，如下所示：</p>
+<p align="left">&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131021106529468.png" alt=""></p>
+<p align="left">&nbsp; 直接右键qianduan3 --&gt; Copy URL to Clipboard 即可。</p>
+<p align="left">&nbsp; 其中qianduan3项目有如下文件，如下图所示：</p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131021430904360.png" alt=""></p>
+<p align="left">最后点击上面的checkout按钮后，就可以在主干上把代码从远程服务器上获取到，如下所示：</p>
+<p align="left">&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131022050432586.png" alt=""></p>
+<p align="left"><strong>二：新建分支</strong></p>
+<p align="left"><strong>&nbsp;&nbsp;</strong>从trunk（主干上）创建分支(branch)步骤如下：</p>
+<p>&nbsp; 1. 右键trunk --&gt; branch/Tag 如下图：</p>
+<p>&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131022528242622.jpg" alt=""></p>
+<p class="ListParagraph" align="left">&nbsp; 在弹出的对话框如下图：</p>
+<p class="ListParagraph" align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131023226843499.jpg" alt=""></p>
+<p align="left">&nbsp;&nbsp;点击ok按钮后，就可以在VisualSVN Serval服务器上新增newBranch，是从如上服务器qianduan3上的文件拷贝一份的，如下所示：</p>
+<p align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131023477156652.png" alt=""></p>
+<p align="left">现在我们可以再来看看本地branch文件夹了，我现在直接进入branch文件下，右键 --&gt; Chenckout下，就可以把newBranch下的所有文件提取出来了，如下所示：</p>
+<p align="left">&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131024100745821.png" alt=""></p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131024289968807.png" alt=""></p>
+<p align="left">点击ok按钮就可以把文件提取出来了，如下图所示：</p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131024519655091.png" alt=""></p>
+<p align="left">分支目前建立在svn的服务器端，本地并没有更新，对本地branch文件夹 右键--&gt; update即可，就可以更新到分支代码，如下所示：</p>
+<p align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131025128569273.png" alt=""></p>
+<p>四：合并分支到主干上</p>
+<p align="left">&nbsp; &nbsp;比如我现在对branch分支上新增3.txt文件，然后提交上去，如下所示：</p>
+<p align="left">&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131026181374296.png" alt=""></p>
+<p align="left">我现在想把分支上的代码3.txt合并到主干上trunk，现在要怎么合并呢？步骤如下：</p>
+<p>&nbsp; 1. 回到我们刚刚的主干（trunk）文件夹下，鼠标右键该文件夹 --&gt; TortoiseSVN --&gt; Merge 如下图所示：</p>
+<p>&nbsp;&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131027053879661.jpg" alt=""></p>
+<p class="ListParagraph" align="left">在弹出的窗口，如下图所示：</p>
+<p class="ListParagraph" align="left">&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131027387158880.jpg" alt=""></p>
+<p class="ListParagraph" align="left">接着点击【<span lang="EN-US">Next】下一步，如下图所示：</span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131028033098932.jpg" alt=""></span></p>
+<p class="ListParagraph" align="left">再接着【<span lang="EN-US">Next】下一步，如下图所示：</span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131028273408259.jpg" alt=""></span></p>
+<p class="ListParagraph" align="left">&nbsp;</p>
+<p class="ListParagraph" align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131028429349860.png" alt=""></p>
+<p class="ListParagraph" align="left">就可以看到主干<span lang="EN-US">trunk上多加了一个<span lang="EN-US">3.txt，就是从分支上合并过来的。</span></span></p>
+<p>五：合并主干到分支。</p>
+<p>&nbsp;如果主干上有一些更新，比如说<span lang="EN-US">jar包更新等等，那么这些要更新到分支上去，如何操作呢？比如我现在在主干上新建一个<span lang="EN-US">4.txt文件，比如如下：</span></span></p>
+<p>&nbsp;<img src="./SVN使用教程总结 - armyfai - 博客园_files/131029453409829.png" alt=""></p>
+<p>我现在的分支上目录如下：</p>
+<p><img src="./SVN使用教程总结 - armyfai - 博客园_files/131030012933089.png" alt=""></p>
+<p align="left">现在是想把主干上的4.txt合并到分支上来，要如何操作？</p>
+<p align="left">步骤如下，还是和刚刚操作类似.</p>
+<p>&nbsp;1. 我们在分支点击branch --&gt; 右键TortoiseSVN --&gt; Merge 如下图所示：</p>
+<p><img src="./SVN使用教程总结 - armyfai - 博客园_files/131030374654605.jpg" alt=""></p>
+<p>&nbsp;</p>
+<p class="ListParagraph" align="left">在弹出新窗口后，如下图所示：</p>
+<p class="ListParagraph" align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131030572623989.jpg" alt=""></p>
+<p class="ListParagraph" align="left">接着点击【<span lang="EN-US">Next】下一步，如下图所示：</span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131031194024159.jpg" alt=""></span></p>
+<p class="ListParagraph" align="left">&nbsp;</p>
+<p class="ListParagraph" align="left">继续下一步，如下图：</p>
+<p class="ListParagraph" align="left"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131031351991933.jpg" alt=""></p>
+<p class="ListParagraph" align="left">最后直接<span lang="EN-US">merge，就可以看到分支<span lang="EN-US">branch上也有主干上的<span lang="EN-US">4.txt文件了，也就是说，合并主干到分支上也是可以的，如下图所示：</span></span></span></p>
+<p class="ListParagraph" align="left"><span lang="EN-US"><img src="./SVN使用教程总结 - armyfai - 博客园_files/131031508096763.png" alt=""></span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/armyfai/category/428741.html" target="_blank">C#</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3985660,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;5b9718e1-0223-e211-aa8f-842b2b196315&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./SVN使用教程总结 - armyfai - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./SVN使用教程总结 - armyfai - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/armyfai/" target="_blank"><img src="./SVN使用教程总结 - armyfai - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/armyfai/">armyfai</a><br>
+            <a href="http://home.cnblogs.com/u/armyfai/followees">关注 - 27</a><br>
+            <a href="http://home.cnblogs.com/u/armyfai/followers">粉丝 - 239</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;5b9718e1-0223-e211-aa8f-842b2b196315&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(3985660,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">121</span>
+    </div>
+    <div class="buryit" onclick="votePost(3985660,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/armyfai/p/3976700.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/armyfai/p/3976700.html" title="发布于2014-09-17 11:15">jQuery常用方法一览</a><br><a href="http://www.cnblogs.com/armyfai/p/4010563.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/armyfai/p/4010563.html" title="发布于2014-10-08 10:09">delphi基本语法</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-09-22 11:15</span> <a href="http://www.cnblogs.com/armyfai/">armyfai</a> 阅读(<span id="post_view_count">401613</span>) 评论(<span id="post_comment_count">60</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=3985660" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/armyfai/p/3985660.html#" onclick="AddToWz(3985660);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=132283,cb_entryId=3985660,cb_blogApp=currentBlogApp,cb_blogUserGuid='5b9718e1-0223-e211-aa8f-842b2b196315',cb_entryCreatedDate='2014/9/22 11:15:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"><div class="pager"><a href="http://www.cnblogs.com/armyfai/p/3985660.html#!comments" onclick="commentManager.renderComments(1,50);return false;">&lt; Prev</a><a href="http://www.cnblogs.com/armyfai/p/3985660.html#!comments" onclick="commentManager.renderComments(1,50);return false;">1</a><span class="current">2</span></div></div>
+<!--done-->
+<br>
+<div class="feedback_area_title">评论</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3506878" class="layer">#51楼</a><a name="3506878" id="comment_anchor_3506878"></a> <span class="comment_date">2016-09-09 14:38</span> | <a id="a_comment_author_3506878" href="http://www.cnblogs.com/qiutianlidehanxing-blog/" target="_blank">夏吟秋</a> <a href="http://msg.cnblogs.com/send/%E5%A4%8F%E5%90%9F%E7%A7%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3506878" class="blog_comment_body">真是好文章！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3506878,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3506878,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3506878_avatar" style="display:none;">http://pic.cnblogs.com/face/1008526/20161015111142.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3517089" class="layer">#52楼</a><a name="3517089" id="comment_anchor_3517089"></a> <span class="comment_date">2016-09-22 15:37</span> | <a id="a_comment_author_3517089" href="http://www.cnblogs.com/python-life/" target="_blank">智慧IT人生</a> <a href="http://msg.cnblogs.com/send/%E6%99%BA%E6%85%A7IT%E4%BA%BA%E7%94%9F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3517089" class="blog_comment_body">收藏了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3517089,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3517089,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3517089_avatar" style="display:none;">http://pic.cnblogs.com/face/725356/20150227102139.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3517219" class="layer">#53楼</a><a name="3517219" id="comment_anchor_3517219"></a> <span class="comment_date">2016-09-22 17:21</span> | <a id="a_comment_author_3517219" href="http://home.cnblogs.com/u/1031164/" target="_blank">Chan丶</a> <a href="http://msg.cnblogs.com/send/Chan%E4%B8%B6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3517219" class="blog_comment_body">看完了，也学会了，非常感谢楼主写这么详细的教程~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3517219,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3517219,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3529009" class="layer">#54楼</a><a name="3529009" id="comment_anchor_3529009"></a> <span class="comment_date">2016-10-12 13:15</span> | <a id="a_comment_author_3529009" href="http://www.cnblogs.com/shengxingwang/" target="_blank">esonpink</a> <a href="http://msg.cnblogs.com/send/esonpink" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3529009" class="blog_comment_body">haha</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3529009,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3529009,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3529009_avatar" style="display:none;">http://pic.cnblogs.com/face/1024289/20161029204625.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3530878" class="layer">#55楼</a><a name="3530878" id="comment_anchor_3530878"></a> <span class="comment_date">2016-10-14 09:37</span> | <a id="a_comment_author_3530878" href="http://www.cnblogs.com/wanzaiqidao/" target="_blank">郝姬友</a> <a href="http://msg.cnblogs.com/send/%E9%83%9D%E5%A7%AC%E5%8F%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3530878" class="blog_comment_body">谢谢分享</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3530878,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3530878,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3537724" class="layer">#56楼</a><a name="3537724" id="comment_anchor_3537724"></a> <span class="comment_date">2016-10-21 14:35</span> | <a id="a_comment_author_3537724" href="http://www.cnblogs.com/gggzly/" target="_blank">追溯。</a> <a href="http://msg.cnblogs.com/send/%E8%BF%BD%E6%BA%AF%E3%80%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3537724" class="blog_comment_body">mark</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3537724,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3537724,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3537724_avatar" style="display:none;">http://pic.cnblogs.com/face/747189/20161003100131.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3539926" class="layer">#57楼</a><a name="3539926" id="comment_anchor_3539926"></a> <span class="comment_date">2016-10-24 22:38</span> | <a id="a_comment_author_3539926" href="http://www.cnblogs.com/luoyukami/" target="_blank">落羽kami</a> <a href="http://msg.cnblogs.com/send/%E8%90%BD%E7%BE%BDkami" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3539926" class="blog_comment_body">感谢楼主这么详细的教程！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3539926,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3539926,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3541409" class="layer">#58楼</a><a name="3541409" id="comment_anchor_3541409"></a> <span class="comment_date">2016-10-26 16:58</span> | <a id="a_comment_author_3541409" href="http://www.cnblogs.com/jycboy/" target="_blank">超超boy</a> <a href="http://msg.cnblogs.com/send/%E8%B6%85%E8%B6%85boy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3541409" class="blog_comment_body">6的飞起！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3541409,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3541409,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3555191" class="layer">#59楼</a><a name="3555191" id="comment_anchor_3555191"></a> <span class="comment_date">2016-11-14 11:44</span> | <a id="a_comment_author_3555191" href="http://www.cnblogs.com/cokefenta/" target="_blank">cokefenta</a> <a href="http://msg.cnblogs.com/send/cokefenta" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3555191" class="blog_comment_body">每次有遗忘的时候都会过来看看~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3555191,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3555191,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3555191_avatar" style="display:none;">http://pic.cnblogs.com/face/621824/20151130130426.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/armyfai/p/3985660.html#3577802" class="layer">#60楼</a><a name="3577802" id="comment_anchor_3577802"></a><span id="comment-maxId" style="display:none;">3577802</span><span id="comment-maxDate" style="display:none;">2016/12/11 14:52:27</span> <span class="comment_date">2016-12-11 14:52</span> | <a id="a_comment_author_3577802" href="http://home.cnblogs.com/u/1078804/" target="_blank">万百度</a> <a href="http://msg.cnblogs.com/send/%E4%B8%87%E7%99%BE%E5%BA%A6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3577802" class="blog_comment_body">很好，简单易用，易明白，非常好！！！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3577802,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3577802,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"><div class="pager"><a href="http://www.cnblogs.com/armyfai/p/3985660.html#!comments" onclick="commentManager.renderComments(1,50);return false;">&lt; Prev</a><a href="http://www.cnblogs.com/armyfai/p/3985660.html#!comments" onclick="commentManager.renderComments(1,50);return false;">1</a><span class="current">2</span></div></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/armyfai/p/3985660.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/armyfai/p/3985660.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://click.aliyun.com/m/13338/" target="_blank">【招募】2017云栖大会深圳峰会火热报名中</a><br><a href="http://click.aliyun.com/m/14477/" target="_blank">【推荐】阿里云云盾帮您解读WAF防护功能</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/565747/" target="_blank">Firefox、Edge添加G Suite特性，支持脱机数据访问</a><br> ·  <a href="http://news.cnblogs.com/n/565746/" target="_blank">姚劲波否认58集团裁员传闻 到家业务今年会落地香港</a><br> ·  <a href="http://news.cnblogs.com/n/565745/" target="_blank">为了让霍金说上话，他的轮椅被装上了多少黑科技？</a><br> ·  <a href="http://news.cnblogs.com/n/565744/" target="_blank">外媒Android O开发者预览版上手视频</a><br> ·  <a href="http://news.cnblogs.com/n/565743/" target="_blank">暴雪正计划推《守望先锋》地图编辑器 但不会在近期发布</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&app=product_download&a=reg&utm_source=csdn&utm_medium=pic&utm_campaign=show&utm_content=v10&utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img width="468" height="60" src="./SVN使用教程总结 - armyfai - 博客园_files/24442-20170118152220281-363324784.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/205634/" target="_blank">程序员学习能力提升三要素</a><br> ·  <a href="http://kb.cnblogs.com/page/559403/" target="_blank">为什么我要写自己的框架？</a><br> ·  <a href="http://kb.cnblogs.com/page/562433/" target="_blank">垃圾回收原来是这么回事</a><br> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/armyfai/">armyfai</a><br>园龄：<a href="http://home.cnblogs.com/u/armyfai/" title="入园时间：2012-10-31">4年4个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/armyfai/followers/">239</a><br>关注：<a href="http://home.cnblogs.com/u/armyfai/followees/">27</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;5b9718e1-0223-e211-aa8f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/armyfai/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/armyfai/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/armyfai/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/armyfai/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/armyfai/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="http://www.cnblogs.com/armyfai/p/3985660.html#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/armyfai/p/6306390.html">1. JS跨域请求</a></li><li><a href="http://www.cnblogs.com/armyfai/p/6088968.html">2. Android动画效果translate、scale、alpha、rotate详解</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5945214.html">3. ［Android Studio 权威教程］断点调试和高级调试</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5937743.html">4. Android 使用版本控制工具时添加忽略文件方式</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5919952.html">5. devexpress表格控件gridcontrol设置隔行变色、焦点行颜色、设置（改变）显示值、固定列不移动(附源码)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5912414.html">6. 详解shape标签</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5902482.html">7. 以向VS 程序打包集成自动写入注册表功能为例，介绍如何实现自由控制安装过程</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5898626.html">8. C#组件系列——又一款Excel处理神器Spire.XLS，你值得拥有</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5865402.html">9. Android样式的开发:Style篇</a></li><li><a href="http://www.cnblogs.com/armyfai/p/5864510.html">10. Android样式的开发:drawable汇总篇</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/armyfai/tag/asp.net/">asp.net</a>(3)</li><li><a href="http://www.cnblogs.com/armyfai/tag/C%23/">C#</a>(1)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(125)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/armyfai/category/847732.html">Android(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/armyfai/category/428740.html">asp.net(17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/armyfai/category/428741.html">C#(74)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/armyfai/category/738373.html">C#服务端(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/armyfai/category/428131.html">MVC(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/armyfai/category/561847.html">NHibernate(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/armyfai/category/561961.html">WCF(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/armyfai/category/428743.html">数据库(8)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/armyfai/p/5861205.html#3609691">1. Re:最全面的百度地图JavaScript离线版开发</a></li>
+        <li class="recent_comment_body">大神，下载地址不能用了，能不能在给个下载地址，学习下。</li>
+        <li class="recent_comment_author">--jingyanbo</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/armyfai/p/3985660.html#3577802">2. Re:SVN使用教程总结</a></li>
+        <li class="recent_comment_body">很好，简单易用，易明白，非常好！！！</li>
+        <li class="recent_comment_author">--万百度</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/armyfai/p/3985660.html#3555191">3. Re:SVN使用教程总结</a></li>
+        <li class="recent_comment_body">每次有遗忘的时候都会过来看看~</li>
+        <li class="recent_comment_author">--cokefenta</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/armyfai/p/3985660.html#3541409">4. Re:SVN使用教程总结</a></li>
+        <li class="recent_comment_body">6的飞起！！</li>
+        <li class="recent_comment_author">--超超boy</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/armyfai/p/3985660.html#3539926">5. Re:SVN使用教程总结</a></li>
+        <li class="recent_comment_body">感谢楼主这么详细的教程！</li>
+        <li class="recent_comment_author">--落羽kami</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="./SVN使用教程总结 - armyfai - 博客园_files/SVN使用教程总结 - armyfai - 博客园.htm">1. SVN使用教程总结(401613)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3884341.html">2. JS 循环遍历JSON数据(56795)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3889980.html">3. httpwebrequest详解【转】(31882)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3911741.html">4. 基于Web Service的客户端框架搭建一：C#使用Http Post方式传递Json数据字符串调用Web Service(13722)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3566582.html">5. CRC-16校验C#代码(13571)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="./SVN使用教程总结 - armyfai - 博客园_files/SVN使用教程总结 - armyfai - 博客园.htm">1. SVN使用教程总结(60)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3903956.html">2. SqlBulkCopy类进行大数据(10000万条以上)插入测试(6)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3566144.html">3. C# CRC16 查表法(2)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3884341.html">4. JS 循环遍历JSON数据(2)</a></li><li><a href="http://www.cnblogs.com/armyfai/p/3611112.html">5. WCF心跳判断服务端及客户端是否掉线并实现重连接(1)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 armyfai
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
